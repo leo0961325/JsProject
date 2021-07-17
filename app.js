@@ -68,6 +68,25 @@ add.addEventListener("click" , e => {
     //style.scss keyframes -> scaleUp 動畫效果
     todo.style.animation = "scaleUp 0.8s forwards"
 
+    //create an object ->
+    let myTodo = {
+        todoText : todoText,
+        todoMonth : todoMonth,
+        todoDate : todoDate
+    };
+
+    //store data into an array of objects
+    let myList = localStorage.getItem("list")
+    if (myList == null) {
+        //把上面建立的obj 放進來
+        localStorage.setItem("list" , JSON.stringify([myTodo]))
+    } else{
+        let myListArray = JSON.parse(myList);
+        myListArray.push(myTodo);
+        localStorage.setItem("list",JSON.stringify([myListArray]));
+    }
+    console.log(JSON.parse(localStorage.getItem("list")))
+
     form.children[0].value = ""; //clear text 把打過字的欄位清空
     //再把todo放進去section裡面
     section.appendChild(todo);
