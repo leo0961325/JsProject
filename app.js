@@ -74,7 +74,7 @@ add.addEventListener("click" , e => {
         todoMonth : todoMonth,
         todoDate : todoDate
     };
-
+    //test
     //store data into an array of objects
     let myList = localStorage.getItem("list")
     if (myList == null) {
